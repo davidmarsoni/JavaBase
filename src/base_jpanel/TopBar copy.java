@@ -8,8 +8,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -32,10 +30,25 @@ public class TopBar extends JPanel{
     private void generateUI() {
         //Initialize the top bar
         setPreferredSize(new Dimension(TOP_BAR_WIDTH, TOP_BAR_HEIGHT));
-        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         setBorder(null);
 
-        
+        //Declare the left and right panel
+        JPanel topBarLeft = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		JPanel topBarRight = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+
+		//Initialize the left and right panel
+		topBarLeft.setPreferredSize(new Dimension((int)(TOP_BAR_WIDTH/1.5),TOP_BAR_HEIGHT));
+		topBarRight.setPreferredSize(new Dimension(TOP_BAR_WIDTH/3,TOP_BAR_HEIGHT));
+        //center vertically the left and right panel
+        topBarLeft.setAlignmentY(JPanel.CENTER_ALIGNMENT);
+        topBarRight.setAlignmentY(JPanel.CENTER_ALIGNMENT);
+        //Add a right margin to the right panel
+        topBarRight.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
+
+		//set background color for debug
+		//topBarLeft.setBackground(Color.red);
+		//topBarRight.setBackground(Color.blue);
 
         //Add the curent time to the top bar
         JLabel lblHour = new JLabel();
@@ -49,8 +62,9 @@ public class TopBar extends JPanel{
                 lblHour.setText(getCurrentHoursMinutes());
             }
         }, 0, 60000);
-        add(lblHour, FlowLayout.LEFT);
-        add(Box.createHorizontalGlue());
+        topBarLeft.add(lblHour, FlowLayout.LEFT);
+
+
 
         //Add the battery percentage to the top bar
         JLabel lblBattery = new JLabel();
@@ -59,7 +73,7 @@ public class TopBar extends JPanel{
         lblBattery.setPreferredSize(new Dimension(60, TOP_BAR_HEIGHT));
         lblBattery.setFont(Functions.getFont(16));
         lblBattery.setText("30%");
-        add(lblBattery);
+        topBarRight.add(lblBattery);
 
         //Add the battery Image to the top bar
         JLabel lblBatteryImg = new JLabel(new ImageIcon());
@@ -70,12 +84,12 @@ public class TopBar extends JPanel{
 
         //set the background of the jlabel with a image
         lblBatteryImg.setIcon(resizeIcon(getImageIcon("icons\\topbar\\battery\\battery_charging.png"), 20, 38));
-        add(lblBatteryImg);
+        topBarRight.add(lblBatteryImg);
 
         JButton btnTmp = new JButton();
 		//deforme the image to fit the button
-		btnTmp.setIcon(resizeIcon(getImageIcon("icons\\topbar\\close.png"), 40, 40));
-		btnTmp.setPreferredSize(new Dimension(40,40));
+		btnTmp.setIcon(resizeIcon(getImageIcon("icons\\topbar\\close.png"), 35, 35));
+		btnTmp.setPreferredSize(new Dimension(40,35));
 		// resize the image to fit the button
 		btnTmp.setFocusable(false);
 		//remove border
@@ -88,14 +102,14 @@ public class TopBar extends JPanel{
 				System.exit(0);
 			}
 		}); 
-       
-        add(Box.createHorizontalStrut(10));
-        add(btnTmp);
-        add(Box.createHorizontalStrut(10));
         
+        //Add the close button to the top bar with 5px padding left
+        btnTmp.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 0));
+        topBarRight.add(btnTmp);
 
         //add the left and right panel to the top bar
-        
+        this.add(topBarRight, FlowLayout.LEFT);
+        this.add(topBarLeft, FlowLayout.LEFT);
 
 
     }

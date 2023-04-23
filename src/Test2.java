@@ -1,19 +1,11 @@
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.Image;
-import java.awt.Insets;
-import java.awt.event.*;
-
 import javax.swing.*;
-import javax.swing.border.Border;
-
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+import base_jpanel.NavBar;
 import base_jpanel.TopBar;
 
-//hello world test
 public class Test2 extends JFrame {
     public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -34,14 +26,22 @@ public class Test2 extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 393, 852);
 		setUndecorated(true);
+
+		//set a border layout
+		getContentPane().setLayout(new BorderLayout(0, 0));
+		
 		//set border null
-		getContentPane().setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		//getContentPane().setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
 		
 		JPanel topBar = new TopBar();
+		JPanel NavBar = new NavBar();
 
-		//set the to bar right and left to the same size
-		add(topBar);
+		//set the to bar to the north
+		getContentPane().add(topBar, BorderLayout.NORTH);
+		//set the nav bar to the south
+		getContentPane().add(NavBar, BorderLayout.SOUTH);
+		
 	}
 
 	

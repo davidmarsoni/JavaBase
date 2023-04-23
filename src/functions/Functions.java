@@ -9,7 +9,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-public interface Functions {
+public class Functions {
     public static String getCurrentHoursMinutes() {
         return Integer.toString(LocalTime.now().getHour()) + ":" + Integer.toString(LocalTime.now().getMinute());
     }
