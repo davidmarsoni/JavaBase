@@ -3,6 +3,8 @@ package base_jpanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -15,6 +17,7 @@ import functions.Functions;
 public class Battery extends JPanel {
     public static final int WIDTH =85;
     public static final int HEIGHT = TopBar.HEIGHT;
+    private Timer updateBattery = new Timer();;
 
     public Battery() {
         generateUI();
@@ -32,7 +35,7 @@ public class Battery extends JPanel {
         lblBattery.setHorizontalAlignment(JLabel.CENTER);
         lblBattery.setPreferredSize(new Dimension(70, HEIGHT));
         lblBattery.setFont(Functions.getFont(16));
-        lblBattery.setText("100%");
+        
         add(lblBattery);
         add(Box.createHorizontalStrut(2));
         //Add the battery Image to the top bar
@@ -43,13 +46,39 @@ public class Battery extends JPanel {
         lblBatteryImg.setIcon(null);
 
         //set the background of the jlabel with a image
-        lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_charging.png"), 20, HEIGHT-2));
         add(lblBatteryImg);
 
-        //execute power shell command to get the battery percentage
-        //String command = "Get-WmiObject -Class Win32_Battery | Select-Object -ExpandProperty EstimatedChargeRemaining";
-        String command = "Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object -ExpandProperty Caption";
-        String result = Functions.executePowerShellCommand(command);
-        System.out.println(result);
+       
+        updateBattery.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                String command = "Get-WmiObject -Class Win32_Battery | Select-Object -ExpandProperty EstimatedChargeRemaining";
+                String result = Functions.executePowerShellCommand(command);
+                System.out.println(result);
+                if (result == "") {
+                    lblBattery.setText(result + "No battery");
+                    remove(lblBatteryImg);
+                } else if (Integer.parseInt(result) >= 75) {
+                    lblBattery.setText(result + "%");
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_100.png"), 20, HEIGHT-2));
+                }  else if (Integer.parseInt(result) >= 75) {
+                    lblBattery.setText(result + "%");
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_100.png"), 20, HEIGHT-2));
+                } else if (Integer.parseInt(result) >= 50) {
+                    lblBattery.setText(result + "%");
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_75.png"), 20, HEIGHT-2));
+                } else if (Integer.parseInt(result) >= 25) {
+                    lblBattery.setText(result + "%");
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_50.png"), 20, HEIGHT-2));
+                } else if (Integer.parseInt(result) >= 10) {
+                    lblBattery.setText(result + "%");
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_25.png"), 20, HEIGHT-2));
+                } else if (Integer.parseInt(result) >= 0) {
+                    lblBattery.setText(result + "%");
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_0.png"), 20, HEIGHT-2));
+                }
+              
+            }
+        }, 0, 60000);
     }
 }

@@ -23,7 +23,7 @@ public class TopBar extends JPanel{
     protected static final int HEIGHT = 40;
     protected static final int WIDTH = ApplicationPanel.WIDTH;
     protected Dimension topBarSize = new Dimension(WIDTH, HEIGHT);
-    private Timer updateHoursMinutes = new Timer();;
+    private Timer updateHoursMinutes = new Timer();
 
     public TopBar() {
         generateUI();
