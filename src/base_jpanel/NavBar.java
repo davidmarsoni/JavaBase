@@ -16,12 +16,15 @@ import javax.swing.JPanel;
 import static functions.Functions.*;
 
 public class NavBar extends JPanel {
+    public static final int HEIGHT = 80;
+    public static final int WIDTH = ApplicationPanel.WIDTH;
+   
     public NavBar() {
         generateUI();
     }
 
     private void generateUI() {
-        setPreferredSize(new Dimension(393, 80));
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBackground(Color.RED);
         setLayout(new BorderLayout(0, 0));
 

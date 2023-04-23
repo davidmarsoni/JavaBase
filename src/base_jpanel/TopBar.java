@@ -20,9 +20,9 @@ import static functions.Functions.*;
 
 public class TopBar extends JPanel{
     
-    protected final int TOP_BAR_HEIGHT = 40;
-    protected final int TOP_BAR_WIDTH = 393;
-    protected Dimension topBarSize = new Dimension(TOP_BAR_WIDTH, TOP_BAR_HEIGHT);
+    protected static final int HEIGHT = 40;
+    protected static final int WIDTH = ApplicationPanel.WIDTH;
+    protected Dimension topBarSize = new Dimension(WIDTH, HEIGHT);
     private Timer updateHoursMinutes = new Timer();;
 
     public TopBar() {
@@ -31,7 +31,7 @@ public class TopBar extends JPanel{
 
     private void generateUI() {
         //Initialize the top bar
-        setPreferredSize(new Dimension(TOP_BAR_WIDTH, TOP_BAR_HEIGHT));
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBorder(null);
 
@@ -41,7 +41,7 @@ public class TopBar extends JPanel{
         JLabel lblHour = new JLabel();
         lblHour.setVerticalAlignment(JLabel.CENTER);
         lblHour.setHorizontalAlignment(JLabel.CENTER);
-        lblHour.setPreferredSize(new Dimension(60, TOP_BAR_HEIGHT));
+        lblHour.setPreferredSize(new Dimension(60, HEIGHT));
         lblHour.setFont(Functions.getFont(16));
         updateHoursMinutes.schedule(new TimerTask() {
             @Override
@@ -52,26 +52,7 @@ public class TopBar extends JPanel{
         add(lblHour, FlowLayout.LEFT);
         add(Box.createHorizontalGlue());
 
-        //Add the battery percentage to the top bar
-        JLabel lblBattery = new JLabel();
-        lblBattery.setVerticalAlignment(JLabel.CENTER);
-        lblBattery.setHorizontalAlignment(JLabel.CENTER);
-        lblBattery.setPreferredSize(new Dimension(60, TOP_BAR_HEIGHT));
-        lblBattery.setFont(Functions.getFont(16));
-        lblBattery.setText("30%");
-        add(lblBattery);
-
-        //Add the battery Image to the top bar
-        JLabel lblBatteryImg = new JLabel(new ImageIcon());
-        lblBatteryImg.setVerticalAlignment(JLabel.CENTER); 
-        lblBatteryImg.setHorizontalAlignment(JLabel.CENTER);
-        lblBatteryImg.setPreferredSize(new Dimension(20, 38));
-        lblBatteryImg.setIcon(null);
-
-        //set the background of the jlabel with a image
-        lblBatteryImg.setIcon(resizeIcon(getImageIcon("icons\\topbar\\battery\\battery_charging.png"), 20, 38));
-        add(lblBatteryImg);
-
+        add(new Battery());
         JButton btnTmp = new JButton();
 		//deforme the image to fit the button
 		btnTmp.setIcon(resizeIcon(getImageIcon("icons\\topbar\\close.png"), 40, 40));
@@ -92,11 +73,5 @@ public class TopBar extends JPanel{
         add(Box.createHorizontalStrut(10));
         add(btnTmp);
         add(Box.createHorizontalStrut(10));
-        
-
-        //add the left and right panel to the top bar
-        
-
-
     }
 }
