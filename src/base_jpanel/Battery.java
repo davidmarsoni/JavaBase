@@ -54,47 +54,58 @@ public class Battery extends JPanel {
         updateBattery.schedule(new TimerTask() {
             @Override
             public void run() {
-                //the powershell command to get the battery percentage
-                String command = "Get-WmiObject -Class Win32_Battery | Select-Object -ExpandProperty EstimatedChargeRemaining";
+                //variables of the battery status and percentage
+                int percentage;
+                int status;
+                
+                //the powershell command to get if the battery is charging
+                String command = "Get-WmiObject -Class Win32_Battery | Select-Object -ExpandProperty BatteryStatus";
                 String result = Functions.executePowerShellCommand(command);
                 //remove all the special characters
-                int pourcentage;
                 try {
-                    pourcentage = Integer.parseInt(result.replaceAll("[^0-9]", ""));
+                    status = Integer.parseInt(result.replaceAll("[^0-9]", ""));
                 } catch (Exception e) {
-                    pourcentage = -1;
+                    status = -1;
                 }
                 //System.out.println(result);
-                switch (pourcentage) {
-                case -1:
-                    lblBattery.setText("cabled");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_charging.png"), 20, HEIGHT-2));
-                    updateBattery.cancel();
-                    break;
-                case 100:
+                
+                //if the battery is in a charging state, the percentage is not fetched
+                //(apply to non-laptop devices as if the battery is constantly charging)
+                if (status == 2) {
+                    percentage = -1;
+                } else {
+                    //the powershell command to get the battery percentage
+                    command = "Get-WmiObject -Class Win32_Battery | Select-Object -ExpandProperty EstimatedChargeRemaining";
+                    result = Functions.executePowerShellCommand(command);
+                    //remove all the special characters
+                    try {
+                        percentage = Integer.parseInt(result.replaceAll("[^0-9]", ""));
+                    } catch (Exception e) {
+                        percentage = -1;
+                    }
+                }
+                //System.out.println(result);
+                if (percentage == -1) {
+                    lblBattery.setText("charging");
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_charging.png"), 20, HEIGHT - 2));
+                } else if (percentage >= 80) {
                     lblBattery.setText(result + "%");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_100.png"), 20, HEIGHT-2));
-                    break;
-                case 75:
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_100.png"), 20, HEIGHT - 2));
+                } else if (percentage >= 50) {
                     lblBattery.setText(result + "%");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_75.png"), 20, HEIGHT-2));
-                    break;
-                case 50:
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_75.png"), 20, HEIGHT - 2));
+                } else if (percentage >= 30) {
                     lblBattery.setText(result + "%");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_50.png"), 20, HEIGHT-2));
-                    break;
-                case 25:
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_50.png"), 20, HEIGHT - 2));
+                } else if (percentage >= 10) {
                     lblBattery.setText(result + "%");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_25.png"), 20, HEIGHT-2));
-                    break;
-                case 0:
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_25.png"), 20, HEIGHT - 2));
+                } else {
                     lblBattery.setText(result + "%");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_0.png"), 20, HEIGHT-2));
-                    break;
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_0.png"), 20, HEIGHT - 2));
                 }
 
-                
-              
+
             }
         }, 0, 60000);
     }
