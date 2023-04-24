@@ -54,6 +54,11 @@ public class Battery extends JPanel {
         updateBattery.schedule(new TimerTask() {
             @Override
             public void run() {
+                 
+                //if the battery is in a charging state, the percentage is not fetched
+                //(apply to non-laptop devices as if the battery is constantly charging)
+
+
                 //variables of the battery status and percentage
                 int percentage;
                 int status;
@@ -67,26 +72,24 @@ public class Battery extends JPanel {
                 } catch (Exception e) {
                     status = -1;
                 }
-                //System.out.println(result);
-                
-                //if the battery is in a charging state, the percentage is not fetched
-                //(apply to non-laptop devices as if the battery is constantly charging)
-                if (status == 2) {
-                    percentage = -1;
-                } else {
-                    //the powershell command to get the battery percentage
-                    command = "Get-WmiObject -Class Win32_Battery | Select-Object -ExpandProperty EstimatedChargeRemaining";
-                    result = Functions.executePowerShellCommand(command);
-                    //remove all the special characters
-                    try {
-                        percentage = Integer.parseInt(result.replaceAll("[^0-9]", ""));
-                    } catch (Exception e) {
-                        percentage = -1;
-                    }
+               
+                //the powershell command to get the battery percentage
+                command = "Get-WmiObject -Class Win32_Battery | Select-Object -ExpandProperty EstimatedChargeRemaining";
+                result = Functions.executePowerShellCommand(command);
+                //remove all the special characters
+                try {
+                    percentage = Integer.parseInt(result.replaceAll("[^0-9]", ""));
+                } catch (Exception e) {
+                    percentage = -2;
                 }
-                //System.out.println(result);
-                if (percentage == -1) {
-                    lblBattery.setText("charging");
+                if (status == 2 ) { // charging 
+                    percentage = -1;
+                } 
+
+                if (percentage == -2) {
+                    lblBattery.setText("cabled");
+                } else if (percentage == -1) {
+                    lblBattery.setText(result + "%");
                     lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_charging.png"), 20, HEIGHT - 2));
                 } else if (percentage >= 80) {
                     lblBattery.setText(result + "%");

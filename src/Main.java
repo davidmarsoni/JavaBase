@@ -29,6 +29,7 @@ public class Main extends JFrame{
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 393, 852);
+		// remove the close button
 		setUndecorated(true);
 
 		//set a border layout
