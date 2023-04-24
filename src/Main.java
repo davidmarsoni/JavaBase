@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -40,6 +41,7 @@ public class Main extends JFrame{
 		JPanel topBar = new TopBar();
 		JPanel NavBar = new NavBar();
 		ApplicationPanel ApplicationPanel = new ApplicationPanel();
+		ApplicationPanel.setBackground(Color.red);
 
 		//set the to bar to the north
 		getContentPane().add(topBar, BorderLayout.NORTH);
