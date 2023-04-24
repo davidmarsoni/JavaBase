@@ -35,8 +35,6 @@ public class TopBar extends JPanel{
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBorder(null);
 
-        
-
         //Add the curent time to the top bar
         JLabel lblHour = new JLabel();
         lblHour.setVerticalAlignment(JLabel.CENTER);

@@ -8,6 +8,7 @@ import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+import BasicApp.*;
 import base_jpanel.*;
 
 public class Main extends JFrame{
@@ -28,9 +29,9 @@ public class Main extends JFrame{
 	public Main() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 393, 852);
+		setBounds(0, 0, 393, 852);
 		// remove the close button
-		setUndecorated(true);
+		//setUndecorated(true);
 
 		//set a border layout
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -40,14 +41,11 @@ public class Main extends JFrame{
 
 		
 		JPanel topBar = new TopBar();
-		JPanel NavBar = new NavBar();
-		ApplicationPanel ApplicationPanel = new ApplicationPanel();
+		ApplicationPanel ApplicationPanel = new BasicApp();
 		ApplicationPanel.setBackground(Color.red);
 
 		//set the to bar to the north
 		getContentPane().add(topBar, BorderLayout.NORTH);
-		//set the nav bar to the south
-		getContentPane().add(NavBar, BorderLayout.SOUTH);
 		//set the application panel to the center
 		getContentPane().add(ApplicationPanel, BorderLayout.CENTER);
 
