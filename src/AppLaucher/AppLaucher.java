@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import BasicApp.BasicApp;
+import TestApp.*;
 import base_jpanel.*;
 
 public class AppLaucher extends ApplicationPanel {
@@ -17,13 +17,11 @@ public class AppLaucher extends ApplicationPanel {
     }
 
     public AppLaucher() {
-        generateUI();
+        generateContent();
     }
 
     @Override
-    public void generateUI() {
-        super.generateUI();
-
+    public void generateContent() {
         //create a panel
         JPanel panel = new JPanel();
 
@@ -33,7 +31,7 @@ public class AppLaucher extends ApplicationPanel {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 //end the program
-                changeApp(new BasicApp());
+                changeApp(new TestApp());
             }
         }); 
         panel.add(button);

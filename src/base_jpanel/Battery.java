@@ -1,21 +1,20 @@
 package base_jpanel;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.util.*;
 import java.util.Timer;
-import java.util.TimerTask;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import functions.Functions;
 
-
-
+/**
+ * The battery class is used to display the battery percentage and status on the top bar
+ * of the application. The battery percentage is fetched every 60 seconds.
+ * 
+ * @since 2023-04-20
+ * @author Pitteloud Mathias, mathias.pitteloud@students.hevs.ch
+ */
 public class Battery extends JPanel {
     public static final int WIDTH =85;
     public static final int HEIGHT = TopBar.HEIGHT;
@@ -90,22 +89,22 @@ public class Battery extends JPanel {
                     lblBattery.setText("cabled");
                 } else if (percentage == -1) {
                     lblBattery.setText(result + "%");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_charging.png"), 20, HEIGHT - 2));
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_charging.png"), 20, HEIGHT - 2,java.awt.Image.SCALE_DEFAULT));
                 } else if (percentage >= 80) {
                     lblBattery.setText(result + "%");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_100.png"), 20, HEIGHT - 2));
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_100.png"), 20, HEIGHT - 2,java.awt.Image.SCALE_DEFAULT));
                 } else if (percentage >= 50) {
                     lblBattery.setText(result + "%");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_75.png"), 20, HEIGHT - 2));
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_75.png"), 20, HEIGHT - 2,java.awt.Image.SCALE_DEFAULT));
                 } else if (percentage >= 30) {
                     lblBattery.setText(result + "%");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_50.png"), 20, HEIGHT - 2));
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_50.png"), 20, HEIGHT - 2,  java.awt.Image.SCALE_DEFAULT));
                 } else if (percentage >= 10) {
                     lblBattery.setText(result + "%");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_25.png"), 20, HEIGHT - 2));
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_25.png"), 20, HEIGHT - 2,java.awt.Image.SCALE_DEFAULT));
                 } else {
                     lblBattery.setText(result + "%");
-                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_0.png"), 20, HEIGHT - 2));
+                    lblBatteryImg.setIcon(Functions.resizeIcon(Functions.getImageIcon("icons\\topbar\\battery\\battery_0.png"), 20, HEIGHT - 2,java.awt.Image.SCALE_DEFAULT));
                 }
 
 

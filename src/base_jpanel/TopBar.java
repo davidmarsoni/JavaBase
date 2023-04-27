@@ -1,23 +1,27 @@
 package base_jpanel;
 
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
 import java.util.Timer;
-import java.util.TimerTask;
 
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
+
 
 import functions.Functions;
 import static functions.Functions.*;
 
+/**
+ * This class is used to create a top bar.
+ * The top bar is used to display the time and the battery level.
+ * 
+ * @since 2023-04-20
+ * @author Ferreira Baéce Fabio, fabio.ferreirabaece@students.hevs.ch
+ * @author Marsoni David, david.marsoni@students.hevs.ch
+ * @author Gloor Gian-Luca, gian-luca.gloor@students.hevs.ch
+ * @author Afonso Zepherin, zepherin.afonso@students.hevs.ch
+ * @author Pitteloud Mathias, mathias.pitteloud@students.hevs.ch
+ */
 public class TopBar extends JPanel{
     
     protected static final int HEIGHT = 40;
@@ -53,7 +57,7 @@ public class TopBar extends JPanel{
         add(new Battery());
         JButton btnTmp = new JButton();
 		//deforme the image to fit the button
-		btnTmp.setIcon(resizeIcon(getImageIcon("icons\\topbar\\close.png"), 40, 40));
+		btnTmp.setIcon(Functions.resizeIcon(getImageIcon("icons\\topbar\\close.png"), 40, 40,java.awt.Image.SCALE_DEFAULT));
 		btnTmp.setPreferredSize(new Dimension(40,40));
 		// resize the image to fit the button
 		btnTmp.setFocusable(false);
