@@ -31,7 +31,6 @@ public class NavBar extends JPanel {
 
     private void generateUI() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        setBackground(Color.RED);
         setLayout(new BorderLayout(0, 0));
 
         JPanel layoutV = new JPanel();
@@ -70,6 +69,7 @@ public class NavBar extends JPanel {
         layoutV.add(Box.createVerticalGlue());
         layoutV.add(layoutH);
         layoutV.add(Box.createVerticalGlue());
+       
         this.add(layoutV,BorderLayout.CENTER);
     }
 

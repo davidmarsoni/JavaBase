@@ -10,7 +10,6 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 
 import TestApp.*;
 import base_jpanel.*;
-import functions.Functions;
 
 public class Main extends JFrame{
     public static void main(String[] args) {

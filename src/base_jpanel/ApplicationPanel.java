@@ -18,6 +18,7 @@ import TestApp.TestApp;
  */
 public class ApplicationPanel extends JPanel {
     public static final int WIDTH = 393;
+    public static final int HEIGHT = 852-TopBar.HEIGHT;
     private NavBar navBar;
     private SubApplicationPanel Content;
     private ArrayList<SubApplicationPanel> lstSubApPanel = new ArrayList<SubApplicationPanel>();
@@ -28,7 +29,7 @@ public class ApplicationPanel extends JPanel {
      * This constructor initialize the ApplicationPanel. He set the size and the layout of the panel.
      */
     public ApplicationPanel() {
-        setPreferredSize(new Dimension(WIDTH, 852-TopBar.HEIGHT));
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
         //set a border layout
         setLayout(new BorderLayout(0, 0));
         
@@ -87,13 +88,15 @@ public class ApplicationPanel extends JPanel {
         Content.removeAll();
         if (lstSubApPanel.get(currentSubApPanel) == Content){
             generateContent();
+            revalidate();
+            repaint();
         }else{
             Content.add(lstSubApPanel.get(currentSubApPanel));
+            Content.revalidate();
+            Content.repaint();
         }
-        revalidate();
-        repaint();
-        Content.revalidate();
-        Content.repaint();
+       
+       
     }
 
      /**

@@ -71,9 +71,7 @@ public class TopBar extends JPanel{
 				System.exit(0);
 			}
 		}); 
-       
-        /*add(Box.createHorizontalStrut(10));
-        add(btnTmp);*/
+        
         add(Box.createHorizontalStrut(10));
     }
 }
