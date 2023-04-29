@@ -1,10 +1,11 @@
 package base_jpanel;
 
 import javax.swing.*;
+
+import AppLaucher.AppLaucher;
+
 import java.awt.*;
 import java.util.*;
-
-import TestApp.TestApp;
 
 /**
  * This class is the main panel of the application. It contains the NavBar and the SubApplicationPanel.
@@ -17,12 +18,76 @@ import TestApp.TestApp;
  * @author Pitteloud Mathias, mathias.pitteloud@students.hevs.ch
  */
 public class ApplicationPanel extends JPanel {
+    // Constants
     public static final int WIDTH = 393;
     public static final int HEIGHT = 852-TopBar.HEIGHT;
+
+    // Variables
+    private String name;
+    private ImageIcon icon;
+
     private NavBar navBar;
     private SubApplicationPanel Content;
+
     private ArrayList<SubApplicationPanel> lstSubApPanel = new ArrayList<SubApplicationPanel>();
     private int currentSubApPanel = 0;
+    
+    // Getters and Setters
+
+    /**
+     * Get the icon of the ApplicationPanel.
+     * 
+     * @return The icon of the ApplicationPanel.
+     */
+    public ImageIcon getIcon() {
+        return icon;
+    }
+
+    /**
+     * Set the icon of the ApplicationPanel.
+     * 
+     * @param icon The icon of the ApplicationPanel.
+     */
+    public void setIcon(ImageIcon icon) {
+        this.icon = icon;
+    }
+
+    /**
+     * Get the name of the ApplicationPanel.
+     * 
+     * @return The name of the ApplicationPanel.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Set the name of the ApplicationPanel.
+     * 
+     * @param name The name of the ApplicationPanel.
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    /**
+     * Get the current SubApplicationPanel.
+     * 
+     * @return The current SubApplicationPanel.
+     */
+    public JPanel getContentPanel() {
+        return Content;
+    }
+
+    /**
+     * Get the NavBar.
+     * 
+     * @return The NavBar.
+     */
+    public NavBar getNavBarPanel() {
+        return navBar;
+    }
 
 
     /**
@@ -40,6 +105,12 @@ public class ApplicationPanel extends JPanel {
         add(navBar, BorderLayout.SOUTH);
       
         lstSubApPanel.add(Content);
+    }
+
+    public ApplicationPanel(String name, ImageIcon icon) {
+        this();
+        this.name = name;
+        this.icon = icon;
     }
 
     /**
@@ -60,7 +131,7 @@ public class ApplicationPanel extends JPanel {
     /**
      * Go to the next SubApplicationPanel of the list.
      */
-    public void NextSubApplicationPanel(){
+    public void nextSubApplicationPanel(){
         if(currentSubApPanel <= lstSubApPanel.size()){
             currentSubApPanel++;
             changeSubApplicationPanel();
@@ -72,12 +143,12 @@ public class ApplicationPanel extends JPanel {
     /**
      * Go to the previous SubApplicationPanel of the list.
      */
-    public void PreviousSubApplicationPanel(){
+    public void previousSubApplicationPanel(){
         if(currentSubApPanel > 0){
             currentSubApPanel--;
             changeSubApplicationPanel();
         }else{
-            changeApp(new TestApp());
+            goToHome();
         }
     }
 
@@ -113,6 +184,15 @@ public class ApplicationPanel extends JPanel {
         }
     }
 
+    public void changeSubApplicationPanel(SubApplicationPanel subApPanel){
+        if(lstSubApPanel.contains(subApPanel)){
+            currentSubApPanel = lstSubApPanel.indexOf(subApPanel);
+            changeSubApplicationPanel();
+        }else{
+            System.out.println("This SubApplicationPanel is not in the list");
+        }
+    }
+
     /**
      * Delete the SubApplicationPanel passed in parameter.
      * 
@@ -132,24 +212,6 @@ public class ApplicationPanel extends JPanel {
     }
 
     /**
-     * Get the current SubApplicationPanel.
-     * 
-     * @return The current SubApplicationPanel.
-     */
-    public JPanel getContentPanel() {
-        return Content;
-    }
-
-    /**
-     * Get the NavBar.
-     * 
-     * @return The NavBar.
-     */
-    public NavBar getNavBarPanel() {
-        return navBar;
-    }
-
-    /**
      * Change the ApplicationPanel.
      * 
      * @param app The ApplicationPanel to change.
@@ -160,4 +222,10 @@ public class ApplicationPanel extends JPanel {
         revalidate();
         repaint();
     }
+
+    public void goToHome() {
+        changeApp(new AppLaucher());
+    }
+
+   
 }

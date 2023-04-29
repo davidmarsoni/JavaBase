@@ -40,9 +40,13 @@ public class Functions {
      * @author Marsoni David, david.marsoni@students.hevs.ch
      * @return The font
      */
-    public static Font getFont(int size) {
-        return new Font("roboto", Font.PLAIN, size);
+
+
+    public static Font getFont() {
+        return new Font("roboto",Font.PLAIN,16);
     }
+
+   
 
     /**
      * Resize an ImageIcon to the specified size
@@ -69,7 +73,6 @@ public class Functions {
      * @author Marsoni David, david.marsoni@students.hevs.ch
      */
     public static ImageIcon getImageIcon(String path){
-        //System.out.println(Functions.class.getResource("/ressources/" + path));
         return new ImageIcon(Functions.class.getResource("/ressources/" + path));
     }
 

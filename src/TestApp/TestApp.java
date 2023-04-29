@@ -12,10 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import base_jpanel.ApplicationPanel;
+import functions.Functions;
 
 public class TestApp extends ApplicationPanel{ 
     // create a basic app with a button and a label
     public TestApp() {
+        super("Test App", Functions.getImageIcon("icons\\apps\\chatgpt.png"));
         generateContent();
     }
     @Override

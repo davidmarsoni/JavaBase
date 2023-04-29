@@ -8,6 +8,7 @@ import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+import AppLaucher.AppLaucher;
 import TestApp.*;
 import base_jpanel.*;
 
@@ -33,7 +34,7 @@ public class Main extends JFrame{
 		
 		JPanel topBar = new TopBar();
 
-		ApplicationPanel ApplicationPanel = new TestApp();
+		ApplicationPanel ApplicationPanel = new AppLaucher();
 		
 		getContentPane().add(topBar, BorderLayout.NORTH);
 		getContentPane().add(ApplicationPanel, BorderLayout.CENTER);

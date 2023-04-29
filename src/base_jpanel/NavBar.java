@@ -22,6 +22,8 @@ import static functions.Functions.*;
 public class NavBar extends JPanel {
     public static final int HEIGHT = 80;
     public static final int WIDTH = ApplicationPanel.WIDTH;
+    private static final int WIDTH_BUTTON = 40;
+    private static final Dimension DIMENSION_BUTTON = new Dimension(WIDTH_BUTTON,WIDTH_BUTTON);
     ApplicationPanel app;
    
     public NavBar(ApplicationPanel app) {
@@ -35,14 +37,19 @@ public class NavBar extends JPanel {
 
         JPanel layoutV = new JPanel();
         layoutV.setLayout(new BoxLayout(layoutV, BoxLayout.Y_AXIS));
+
+        layoutV.setBackground(Color.lightGray);
         JPanel layoutH = new JPanel();
+        layoutH.setBackground(null);
         layoutH.setLayout(new BoxLayout(layoutH, BoxLayout.X_AXIS));
 
 
-        JButton btnClose = new JButton();
-		btnClose.setIcon(resizeIcon(getImageIcon("icons\\navbar\\close.png"), 40, 40,java.awt.Image.SCALE_DEFAULT));
-		btnClose.setPreferredSize(new Dimension(40,40));
-		btnClose.addActionListener(new ActionListener() {
+        JButton btnPowerOff = new JButton();
+        btnPowerOff.setName("PowerOff");
+        btnPowerOff.setToolTipText("Power Off");
+		btnPowerOff.setIcon(resizeIcon(getImageIcon("icons\\navbar\\power_off.png"), WIDTH_BUTTON, WIDTH_BUTTON,java.awt.Image.SCALE_DEFAULT));
+		btnPowerOff.setPreferredSize(DIMENSION_BUTTON);
+		btnPowerOff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//end the program
 				System.exit(0);
@@ -51,17 +58,31 @@ public class NavBar extends JPanel {
 
         // add the return button
         JButton btnReturn = new JButton();
-		btnReturn.setIcon(resizeIcon(getImageIcon("icons\\navbar\\return.png"), 40, 40,java.awt.Image.SCALE_DEFAULT));
-		btnReturn.setPreferredSize(new Dimension(40,40));;
+        btnReturn.setName("Return");
+        btnReturn.setToolTipText("Return");
+		btnReturn.setIcon(resizeIcon(getImageIcon("icons\\navbar\\return.png"), WIDTH_BUTTON,WIDTH_BUTTON,java.awt.Image.SCALE_DEFAULT));
+		btnReturn.setPreferredSize(DIMENSION_BUTTON);
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-               app.PreviousSubApplicationPanel();
+               app.previousSubApplicationPanel();
 			}
 		}); 
 
+        JButton btnHome = new JButton();
+        btnHome.setName("Home");
+        btnHome.setToolTipText("Home");
+        btnHome.setIcon(resizeIcon(getImageIcon("icons\\navbar\\home.png"), WIDTH_BUTTON, WIDTH_BUTTON,java.awt.Image.SCALE_DEFAULT));
+        btnHome.setPreferredSize(DIMENSION_BUTTON);
+        btnHome.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                app.goToHome();
+            }
+        });
 
         layoutH.add(Box.createHorizontalGlue());
-        layoutH.add(btnClose);
+        layoutH.add(btnPowerOff);
+        layoutH.add(Box.createHorizontalGlue());
+        layoutH.add(btnHome);
         layoutH.add(Box.createHorizontalGlue());
         layoutH.add(btnReturn);
         layoutH.add(Box.createHorizontalGlue());

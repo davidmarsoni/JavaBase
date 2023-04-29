@@ -35,7 +35,7 @@ public class Battery extends JPanel {
         lblBattery.setVerticalAlignment(JLabel.CENTER);
         lblBattery.setHorizontalAlignment(JLabel.CENTER);
         lblBattery.setPreferredSize(new Dimension(70, HEIGHT));
-        lblBattery.setFont(Functions.getFont(16));
+        lblBattery.setFont(Functions.getFont());
         lblBattery.setText("cabled");
         add(lblBattery);
         add(Box.createHorizontalStrut(2));

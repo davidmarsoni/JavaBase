@@ -9,11 +9,13 @@ import javax.swing.GroupLayout.Alignment;
 
 import base_jpanel.ApplicationPanel;
 import base_jpanel.SubApplicationPanel;
+import functions.Functions;
 
 public class TestApp2 extends ApplicationPanel{ 
 
     // create a basic app with a button and a label
     public TestApp2() {
+        super("Test App 2", Functions.getImageIcon("icons\\apps\\photo.png"));
         generateContent();
         this.addSubApplicationPanel(new TestSubApp());
         this.addSubApplicationPanel(new TestSubApp2());

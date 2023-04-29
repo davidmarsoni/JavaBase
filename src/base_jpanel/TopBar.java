@@ -44,7 +44,7 @@ public class TopBar extends JPanel{
         lblHour.setVerticalAlignment(JLabel.CENTER);
         lblHour.setHorizontalAlignment(JLabel.CENTER);
         lblHour.setPreferredSize(new Dimension(60, HEIGHT));
-        lblHour.setFont(Functions.getFont(16));
+        lblHour.setFont(Functions.getFont());
         updateHoursMinutes.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -53,25 +53,7 @@ public class TopBar extends JPanel{
         }, 0, 60000);
         add(lblHour, FlowLayout.LEFT);
         add(Box.createHorizontalGlue());
-
         add(new Battery());
-        JButton btnTmp = new JButton();
-		//deforme the image to fit the button
-		btnTmp.setIcon(Functions.resizeIcon(getImageIcon("icons\\topbar\\close.png"), 40, 40,java.awt.Image.SCALE_DEFAULT));
-		btnTmp.setPreferredSize(new Dimension(40,40));
-		// resize the image to fit the button
-		btnTmp.setFocusable(false);
-		//remove border
-		btnTmp.setBorder(BorderFactory.createEmptyBorder());
-		//remove the background
-		btnTmp.setContentAreaFilled(false);
-		btnTmp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//end the program
-				System.exit(0);
-			}
-		}); 
-        
         add(Box.createHorizontalStrut(10));
     }
 }
