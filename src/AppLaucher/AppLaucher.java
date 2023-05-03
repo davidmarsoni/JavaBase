@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import LivescoreApp.LivescoreApp;
 import TestApp.*;
 import base_jpanel.*;
 import functions.Functions;
@@ -34,6 +35,7 @@ public class AppLaucher extends ApplicationPanel {
         addAppPanel(new TestApp2());
         addAppPanel(new TestApp());
         addAppPanel(new TestApp2());
+        addAppPanel(new LivescoreApp());
         generateContent();
     }
 
