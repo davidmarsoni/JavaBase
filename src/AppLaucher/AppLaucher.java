@@ -83,7 +83,6 @@ public class AppLaucher extends ApplicationPanel {
         content.add(buttons);
         
         getContentPanel().add(content, BorderLayout.CENTER);
-
         // add a label
 
     }
@@ -96,7 +95,6 @@ public class AppLaucher extends ApplicationPanel {
             //open the right app
             ApplicationPanel app = lstApps.get(Integer.parseInt(btn.getName()));
             changeApp(app);
-	
 		}
 		
 	}

@@ -14,24 +14,17 @@ import base_jpanel.*;
 
 public class Main extends JFrame{
     public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(new FlatIntelliJLaf());
-					Main frame = new Main();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-    	});
+		FlatIntelliJLaf.setup();
+		Main frame = new Main();
+		frame.setVisible(true);
 	}
 
 	public Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 393, 852);
+		setBounds(2000, 0, 393, 852);
 		getContentPane().setLayout(new BorderLayout(0, 0));
-		
+		//setUndecorated(true);
+
 		JPanel topBar = new TopBar();
 
 		ApplicationPanel ApplicationPanel = new AppLaucher();
