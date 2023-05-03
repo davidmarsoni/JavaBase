@@ -21,7 +21,7 @@ public class Main extends JFrame{
 
 	public Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(2000, 0, 393, 852);
+		setBounds(0, 0, 393, 852);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		//setUndecorated(true);
 

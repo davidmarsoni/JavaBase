@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import BlackjackApp.BlackjackApp;
+import BlackjackApp.BlackjackApp2;
 import LivescoreApp.LivescoreApp;
 import TestApp.*;
 import base_jpanel.*;
@@ -19,23 +21,8 @@ public class AppLaucher extends ApplicationPanel {
        
         addAppPanel(new TestApp());
         addAppPanel(new TestApp2());
-        addAppPanel(new TestApp2());
-        addAppPanel(new TestApp2());
-        addAppPanel(new TestApp2());
-        addAppPanel(new TestApp());
-        addAppPanel(new TestApp2());
-        addAppPanel(new TestApp());
-        addAppPanel(new TestApp2());
-        addAppPanel(new TestApp());
-        addAppPanel(new TestApp2());
-        addAppPanel(new TestApp());
-        addAppPanel(new TestApp2());
-        addAppPanel(new TestApp());
-        addAppPanel(new TestApp2());
-        addAppPanel(new TestApp2());
-        addAppPanel(new TestApp());
-        addAppPanel(new TestApp2());
         addAppPanel(new LivescoreApp());
+        addAppPanel(new BlackjackApp2());
         generateContent();
     }
 
