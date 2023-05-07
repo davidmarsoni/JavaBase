@@ -1,5 +1,6 @@
 package functions;
 
+import java.io.File;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -141,6 +142,40 @@ public class Functions {
             chkBuf.close();            
         }catch(Exception e){
             
+        }
+    }
+
+    /**
+     * Check if a folder exists
+     * @param path The path of the folder to check
+     * @return true if the folder exists, false otherwise
+     *
+     * @since 2023-05-07
+     * @author Mathias Pitteloud, mathias.pitteloud@students.hevs.ch
+     */
+    public static boolean folderExist(String path){
+        // Check if the gallery folder exists
+        File f = new File(path);
+        return f.exists();
+    }
+
+    /**
+     * Create a folder
+     * @param path The path of the folder to create
+     * @return true if the folder has been created, false otherwise
+     *
+     * @since 2023-05-07
+     * @author Mathias Pitteloud, mathias.pitteloud@students.hevs.ch
+     */
+    public static boolean createFolder(String path){
+        try {
+            // Create the folder
+            File f = new File(path);
+            return f.mkdir();
+        } catch (Exception e) {
+            System.out.println("Error while creating the folder on: " + path + ". See the stack trace below:");
+            e.printStackTrace();
+            return false;
         }
     }
   
