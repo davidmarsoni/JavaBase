@@ -1,10 +1,13 @@
 package LivescoreApp;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+
+import AbstractClasses.*;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.Box;
-import base_jpanel.*;
+
 import functions.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -12,7 +15,7 @@ import java.awt.*;
 
 
 
-public class LivescoreApp extends ApplicationPanel{
+public class LivescoreApp extends Application{
     public LivescoreApp(){
         super("Livescore App", Functions.getImageIcon("icons\\apps\\soccer.png"));
         generateContent();
@@ -28,7 +31,7 @@ public class LivescoreApp extends ApplicationPanel{
         JButton button = new JButton("Button");
         button.setBackground(Color.black);
         button.addActionListener(e -> {
-            this.changeSubApplicationPanel(2);
+            this.changeSubApplication(2);
         });
 
 

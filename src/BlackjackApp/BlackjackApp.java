@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import base_jpanel.ApplicationPanel;
+import AbstractClasses.Application;
 
-public class BlackjackApp extends ApplicationPanel{ 
+public class BlackjackApp extends Application{ 
     public static void main(String[] args) {
         new BlackjackApp();
     }

@@ -3,9 +3,9 @@ package TestApp;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import base_jpanel.SubApplicationPanel;
+import AbstractClasses.SubApplication;
 
-public class TestSubApp extends SubApplicationPanel {
+public class TestSubApp extends SubApplication {
     public TestSubApp() {
         generateUI();
     }

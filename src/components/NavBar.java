@@ -1,9 +1,11 @@
-package base_jpanel;
+package components;
 
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+
+import AbstractClasses.Application;
 
 import static functions.Functions.*;
 
@@ -21,17 +23,17 @@ import static functions.Functions.*;
  */
 public class NavBar extends JPanel {
     public static final int HEIGHT = 80;
-    public static final int WIDTH = ApplicationPanel.WIDTH;
+    public static final int WIDTH = Application.WIDTH;
     private static final int WIDTH_BUTTON = 40;
     private static final Dimension DIMENSION_BUTTON = new Dimension(WIDTH_BUTTON,WIDTH_BUTTON);
-    ApplicationPanel app;
+    Application app;
    
-    public NavBar(ApplicationPanel app) {
+    public NavBar(Application app) {
         this.app = app;
-        generateUI();
+        generateContent();
     }
 
-    private void generateUI() {
+    private void generateContent() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setLayout(new BorderLayout(0, 0));
 
@@ -64,7 +66,7 @@ public class NavBar extends JPanel {
 		btnReturn.setPreferredSize(DIMENSION_BUTTON);
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-               app.previousSubApplicationPanel();
+               app.previousSubApplication();
 			}
 		}); 
 

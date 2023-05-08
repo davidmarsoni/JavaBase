@@ -2,12 +2,14 @@ package BlackjackApp;
 
 import java.awt.*;
 import javax.swing.*;
+
+import AbstractClasses.Application;
+
 import java.util.ArrayList;
 
-import base_jpanel.ApplicationPanel;
 import functions.Functions;
 
-public class BlackjackApp2 extends ApplicationPanel {
+public class BlackjackApp2 extends Application {
     private BlackjackGame game;
     private JPanel playerCardsPanel;
     private JPanel dealerCardsPanel;

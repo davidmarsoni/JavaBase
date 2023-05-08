@@ -7,18 +7,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
 
-import base_jpanel.ApplicationPanel;
-import base_jpanel.SubApplicationPanel;
+import AbstractClasses.Application;
+import AbstractClasses.SubApplication;
 import functions.Functions;
 
-public class TestApp2 extends ApplicationPanel{ 
+public class TestApp2 extends Application{ 
 
     // create a basic app with a button and a label
     public TestApp2() {
         super("Test App 2", Functions.getImageIcon("icons\\apps\\photo.png"));
         generateContent();
-        this.addSubApplicationPanel(new TestSubApp());
-        this.addSubApplicationPanel(new TestSubApp2());
+        this.addSubApplication(new TestSubApp());
+        this.addSubApplication(new TestSubApp2());
     }   
     
     @Override
@@ -41,7 +41,7 @@ public class TestApp2 extends ApplicationPanel{
         button.addActionListener(e -> {
            
             
-            this.changeSubApplicationPanel(2);
+            this.changeSubApplication(2);
         });
 
         panel.add(button);

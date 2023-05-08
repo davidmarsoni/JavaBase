@@ -7,15 +7,14 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import BlackjackApp.BlackjackApp;
+import AbstractClasses.*;
 import BlackjackApp.BlackjackApp2;
 import LivescoreApp.LivescoreApp;
 import TestApp.*;
-import base_jpanel.*;
 import functions.Functions;
 
-public class AppLaucher extends ApplicationPanel {
-    ArrayList<ApplicationPanel> lstApps = new ArrayList<ApplicationPanel>();
+public class AppLaucher extends Application {
+    ArrayList<Application> lstApps = new ArrayList<Application>();
     private final int WIDTH_APP = 80;
     public AppLaucher() {
        
@@ -26,7 +25,7 @@ public class AppLaucher extends ApplicationPanel {
         generateContent();
     }
 
-    private void addAppPanel(ApplicationPanel app) {
+    private void addAppPanel(Application app) {
         lstApps.add(app);
     }
 
@@ -82,7 +81,7 @@ public class AppLaucher extends ApplicationPanel {
 		public void actionPerformed(ActionEvent e) {
 			JButton btn = (JButton)e.getSource();
             //open the right app
-            ApplicationPanel app = lstApps.get(Integer.parseInt(btn.getName()));
+            Application app = lstApps.get(Integer.parseInt(btn.getName()));
             changeApp(app);
 		}
 		

@@ -1,4 +1,4 @@
-package base_jpanel;
+package components;
 
 import java.awt.Dimension;
 import java.util.*;
@@ -21,10 +21,10 @@ public class Battery extends JPanel {
     private Timer updateBattery = new Timer();;
 
     public Battery() {
-        generateUI();
+        generateContent();
     }
 
-    private void generateUI() {
+    private void generateContent() {
         setPreferredSize(new Dimension(WIDTH, 0));
  
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));

@@ -1,4 +1,4 @@
-package base_jpanel;
+package AbstractClasses;
 
 import javax.swing.JPanel;
 
@@ -9,9 +9,9 @@ import javax.swing.JPanel;
  * @author Marsoni David, david.marsoni@students.hevs.ch
  * @since 2023-04-24
  */
-public class SubApplicationPanel extends JPanel{
+public class SubApplication extends JPanel{
     
-    public SubApplicationPanel() {}
+    public SubApplication() {}
 
     public void generateUI() {
         

@@ -1,13 +1,12 @@
-package base_jpanel;
+package components;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.util.*;
 import java.util.Timer;
 
 import javax.swing.*;
 
-
+import AbstractClasses.Application;
 import functions.Functions;
 import static functions.Functions.*;
 
@@ -24,16 +23,16 @@ import static functions.Functions.*;
  */
 public class TopBar extends JPanel{
     
-    protected static final int HEIGHT = 40;
-    protected static final int WIDTH = ApplicationPanel.WIDTH;
-    protected Dimension topBarSize = new Dimension(WIDTH, HEIGHT);
+    public static final int HEIGHT = 40;
+    public static final int WIDTH = Application.WIDTH;
+    public Dimension topBarSize = new Dimension(WIDTH, HEIGHT);
     private Timer updateHoursMinutes = new Timer();
 
     public TopBar() {
-        generateUI();
+        generateContent();
     }
 
-    private void generateUI() {
+    private void generateContent() {
         //Initialize the top bar
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -43,7 +42,7 @@ public class TopBar extends JPanel{
         JLabel lblHour = new JLabel();
         lblHour.setVerticalAlignment(JLabel.CENTER);
         lblHour.setHorizontalAlignment(JLabel.CENTER);
-        lblHour.setPreferredSize(new Dimension(60, HEIGHT));
+        lblHour.setPreferredSize(new Dimension(50, HEIGHT));
         lblHour.setFont(Functions.getFont());
         updateHoursMinutes.schedule(new TimerTask() {
             @Override
@@ -56,4 +55,6 @@ public class TopBar extends JPanel{
         add(new Battery());
         add(Box.createHorizontalStrut(10));
     }
+
+    
 }

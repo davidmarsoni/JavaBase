@@ -8,9 +8,10 @@ import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+import AbstractClasses.*;
 import AppLaucher.AppLaucher;
 import TestApp.*;
-import base_jpanel.*;
+import components.TopBar;
 
 public class Main extends JFrame{
     public static void main(String[] args) {
@@ -27,9 +28,9 @@ public class Main extends JFrame{
 
 		JPanel topBar = new TopBar();
 
-		ApplicationPanel ApplicationPanel = new AppLaucher();
+		Application Application = new AppLaucher();
 		
 		getContentPane().add(topBar, BorderLayout.NORTH);
-		getContentPane().add(ApplicationPanel, BorderLayout.CENTER);
+		getContentPane().add(Application, BorderLayout.CENTER);
 	}
 }

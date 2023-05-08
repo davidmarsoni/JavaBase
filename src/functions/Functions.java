@@ -33,15 +33,14 @@ public class Functions {
 
     /**
      * Get The font use in the application
+     * You can use .deriveFont() to change the attributes of the font
      * 
      * @param size The size of the font
+     * @return The font
      * 
      * @since 2023-04-20
      * @author Marsoni David, david.marsoni@students.hevs.ch
-     * @return The font
      */
-
-
     public static Font getFont() {
         return new Font("roboto",Font.PLAIN,16);
     }
@@ -63,6 +62,40 @@ public class Functions {
         Image resizedImage = img.getScaledInstance(resizedWidth, resizedHeight, mode);  
         return new ImageIcon(resizedImage);
 	}
+
+    /**
+     * Resize an ImageIcon to the specified size
+     * @param icon The ImageIcon to resize
+     * @param resizedWidth The width of the resized ImageIcon
+     * @param resizedHeight The height of the resized ImageIcon
+     * @return The resized ImageIcon
+     */
+    public static Icon resizeIcon(ImageIcon icon, int resizedWidth, int resizedHeight) {
+        return resizeIcon(icon, resizedWidth, resizedHeight, Image.SCALE_SMOOTH);
+    }
+
+    /**
+     * Resize an ImageIcon to the specified size
+     * @param path The path of the ImageIcon to resize
+     * @param resizedWidth The width of the resized ImageIcon 
+     * @param resizedHeight The height of the resized ImageIcon
+     * @param mode The mode of the resizing
+     * @return The resized ImageIcon
+     */
+    public static Icon resizeIcon(String path, int resizedWidth, int resizedHeight,int mode) {
+        return resizeIcon(getImageIcon(path), resizedWidth, resizedHeight, mode);
+    }
+
+    /**
+     * Resize an ImageIcon to the specified size
+     * @param path The path of the ImageIcon to resize
+     * @param resizedWidth The width of the resized ImageIcon
+     * @param resizedHeight The height of the resized ImageIcon
+     * @return The resized ImageIcon
+     */
+    public static Icon resizeIcon(String path, int resizedWidth, int resizedHeight) {
+        return resizeIcon(getImageIcon(path), resizedWidth, resizedHeight, Image.SCALE_SMOOTH);
+    }
 
     /**
      * Get an ImageIcon from the ressources folder
