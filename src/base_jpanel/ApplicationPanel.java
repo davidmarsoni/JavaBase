@@ -17,7 +17,7 @@ import java.util.*;
  * @author Afonso Zepherin, zepherin.afonso@students.hevs.ch
  * @author Pitteloud Mathias, mathias.pitteloud@students.hevs.ch
  */
-public class ApplicationPanel extends JPanel {
+public abstract class ApplicationPanel extends JPanel {
     // Constants
     public static final int WIDTH = 393;
     public static final int HEIGHT = 852-TopBar.HEIGHT;
